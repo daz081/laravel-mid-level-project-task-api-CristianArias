@@ -13,8 +13,19 @@ use Illuminate\Http\Request;
 class ApiController extends Controller
 {
     // Proyectos
-    public function getProjects(){
-        return Project::all();
+    public function getProjects(Request $request){
+        $mainQuery = Project::query();
+        if ($request->filled('status')) {
+            $mainQuery->where('status', $request->status);
+        }
+        if ($request->filled('name')) {
+            $mainQuery->where('name', 'like', '%'.$request->name.'%');
+        }
+        if ($request->filled('from') && $request->filled('to')) {
+            $mainQuery->whereBetween('created_at', [$request->from, $request->to]);
+        }
+        $proyectos = $mainQuery->get();
+        return response()->json($proyectos);
     }
     public function createProject(CreateProjectRequest $request){
         $validatedData = $request->validated();
@@ -36,8 +47,22 @@ class ApiController extends Controller
     }
 
     // Tareas
-    public function getTasks(){
-        return Task::all();
+    public function getTasks(Request $request){
+        $mainQuery = Task::query();
+        if ($request->filled('status')) {
+            $mainQuery->where('status', $request->status);
+        }
+        if ($request->filled('priority')) {
+            $mainQuery->where('priority', $request->priority);
+        }
+        if ($request->filled('due_date')) {
+            $mainQuery->where('due_date', $request->due_date);
+        }
+        if ($request->filled('project_id')) {
+            $mainQuery->where('project_id', $request->project_id);
+        }
+        $tareas = $mainQuery->get();
+        return response()->json($tareas);
     }
     public function createTask(CreateTaskRequest $request){
         $validatedData = $request->validated();
