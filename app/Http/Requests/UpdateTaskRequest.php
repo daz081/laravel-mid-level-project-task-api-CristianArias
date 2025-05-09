@@ -30,4 +30,24 @@ class UpdateTaskRequest extends FormRequest
             'due_date' => 'required|date',
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'project_id.required' => 'El campo project_id es requerido.',
+            'project_id.uuid' => 'El campo project_id debe ser un UUID válido.',
+            'project_id.exists' => 'El project_id proporcionado no existe.',
+            'title.required' => 'El campo title es requerido.',
+            'title.min' => 'El campo title debe tener al menos 3 caracteres.',
+            'title.max' => 'El campo title debe tener como máximo 100 caracteres.',
+            'description.required' => 'El campo description es requerido.',
+            'status.required' => 'El campo status es requerido.',
+            'status.string' => 'El campo status debe ser una cadena de texto.',
+            'status.in' => 'El campo status debe tener uno de los siguientes valores: pending, in_progress, done.',
+            'priority.required' => 'El campo priority es requerido.',
+            'priority.string' => 'El campo priority debe ser una cadena de texto.',
+            'priority.in' => 'El campo priority debe tener uno de los siguientes valores: low, medium, high.',
+            'due_date.required' => 'El campo due_date es requerido.',
+            'due_date.date' => 'El campo due_date debe ser una fecha válida.',
+        ];
+    }
 }
