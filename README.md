@@ -16,3 +16,4 @@ Instalacion:
     DB_USERNAME=root
     DB_PASSWORD=
     4. Ejecutar php artisan migrate sobre la carpeta del proyecto
+    5. Para levantar un servidor local de pruebas ejecutar: php artisan serve
