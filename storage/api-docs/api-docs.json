@@ -1,0 +1,39 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentación de la API de Proyectos y Tareas",
+        "description": "API para gestionar proyectos y tareas con filtros dinámicos, validaciones, auditoría y más.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Servidor local"
+        }
+    ],
+    "paths": {
+        "/api/projects": {
+            "get": {
+                "tags": [
+                    "Proyectos"
+                ],
+                "summary": "Listar proyectos con filtros dinámicos",
+                "operationId": "70cb3b334415e3dfef6bbb5671167cb9",
+                "responses": {
+                    "200": {
+                        "description": "Lista de proyectos encontrada"
+                    },
+                    "404": {
+                        "description": "No se encontraron proyectos"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Proyectos",
+            "description": "Proyectos"
+        }
+    ]
+}
