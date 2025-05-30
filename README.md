@@ -70,3 +70,6 @@
 
     Ejemplo:
     GET /api/projects?status=inactive&from=2024-01-01&to=2024-12-31
+
+## Para acceder a un log de auditorias ingresar a 
+    http://localhost:8000/api/audits

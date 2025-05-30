@@ -20,3 +20,8 @@ Route::controller(ApiController::class)->group(function () {
     Route::put('/tasks/{id}', 'updateTask');
     Route::delete('/tasks/{id}', 'deleteTask');
 });
+
+// auditorias
+Route::get('/audits', function () {
+    return \OwenIt\Auditing\Models\Audit::latest()->get();
+});
